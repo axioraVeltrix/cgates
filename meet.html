@@ -6,6 +6,12 @@
   <title>College Gates | Book a Meeting</title>
 
   <link rel="stylesheet" href="meet.css" />
+
+  <!-- Calendly widget -->
+  <link
+    href="https://assets.calendly.com/assets/external/widget.css"
+    rel="stylesheet"
+  />
 </head>
 <body>
   <img class="image-gradient" src="gradient (1).png" alt="gradient background"/>
@@ -22,10 +28,7 @@
         <a href="index.html">HOME</a>
         <a href="about.html">ABOUT US</a>
       </nav>
-
-      <div class="nav-right">
-        <a href="classes.html" class="meet-btn">Explore Classes</a>
-      </div>
+    
     </header>
 
     <main>
@@ -226,21 +229,16 @@
           <p class="tag">Booking Calendar</p>
           <h2>Reserve your Zoom session</h2>
           <p class="section-subtitle">
-            Pick your time directly below and confirm your meeting when the live scheduler is connected.
+            Pick your time directly below and confirm your meeting.
           </p>
         </div>
 
-        <div class="booking-wrapper glass booking-fallback">
-          <p class="booking-notice-label">Booking setup pending</p>
-          <h3>Calendly link still needs to be added</h3>
-          <p class="booking-notice-text">
-            TODO: replace the placeholder booking configuration with your real Calendly scheduling URL.
-            Until then, use the contact form on the homepage and we can arrange a session manually.
-          </p>
-          <div class="booking-actions">
-            <a href="index.html#contact" class="btn primary">Go to Contact Form</a>
-            <a href="classes.html" class="btn secondary">View Classes</a>
-          </div>
+        <div class="booking-wrapper glass">
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/YOUR_CALENDLY_LINK"
+            style="min-width:320px; height:700px;"
+          ></div>
         </div>
       </section>
 
@@ -256,7 +254,7 @@
 
         <div class="cta-actions">
           <a href="#booking" class="btn primary">Book Now</a>
-          <a href="index.html#contact" class="btn secondary">Contact Us</a>
+          <a href="contact.html" class="btn secondary">Contact Us</a>
         </div>
       </section>
 
@@ -286,7 +284,7 @@
           <div class="faq-card glass">
             <h3>What if I have questions before booking?</h3>
             <p>
-              You can use the homepage contact form to send your questions before
+              You can use the contact page to send your questions before
               scheduling.
             </p>
           </div>
@@ -294,5 +292,10 @@
       </section>
     </main>
   </div>
+
+  <script
+    src="https://assets.calendly.com/assets/external/widget.js"
+    async
+  ></script>
 </body>
 </html>

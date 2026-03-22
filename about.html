@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — College Gates</title>
   <link rel="stylesheet" href="about.css" />
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 </head>
 <body>
 
@@ -190,7 +193,7 @@
       </div>
     </section>
 
-    <!-- FINAL CTA SECTION -->
+    <!-- ASTRONAUT SECTION -->
     <section class="final-book-section reveal-final">
       <div class="final-book-content">
         <p class="final-label">Next step</p>
@@ -204,19 +207,22 @@
 
       <div class="final-book-visual">
         <div class="final-glow"></div>
-        <div class="final-visual-card glass">
-          <img
-            class="final-visual-image"
-            src="images/team4.jpg"
-            alt="College Gates mentoring session"
-          />
-          <div class="final-visual-copy">
-            <p class="final-visual-label">College Gates</p>
-            <p class="final-visual-text">
-              Practical guidance for academics, testing, and admissions without the broken 3D dependency.
-            </p>
-          </div>
-        </div>
+
+        <model-viewer
+          class="astronaut"
+          alt="Astronaut in space suit"
+          src="./animated_astronaut_character_in_space_suit_loop.glb"
+          autoplay
+          interaction-prompt="none"
+          disable-zoom
+          disable-pan
+          style="pointer-events: none;"
+          shadow-intensity="1"
+          exposure="0.92"
+          environment-image="neutral"
+          camera-orbit="0deg 80deg 140%"
+          field-of-view="30deg">
+        </model-viewer>
       </div>
     </section>
   </main>

@@ -556,46 +556,18 @@ body {
   animation: glowPulse 5.5s ease-in-out infinite;
 }
 
-.final-visual-card {
+.astronaut {
   position: relative;
   z-index: 2;
   width: min(48vw, 620px);
+  height: min(48vw, 620px);
   min-width: 320px;
-  overflow: hidden;
-  border-radius: 34px;
-}
-
-.final-visual-image {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-
-.final-visual-copy {
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
-  padding: 18px 20px;
-  border-radius: 22px;
-  background: rgba(9, 10, 16, 0.78);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-
-.final-visual-label {
-  margin-bottom: 8px;
-  color: #fff;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.final-visual-text {
-  color: rgba(255, 255, 255, 0.78);
-  line-height: 1.6;
+  min-height: 320px;
+  background: transparent;
+  pointer-events: none;
+  filter:
+    drop-shadow(0 0 40px rgba(255,255,255,0.15))
+    drop-shadow(0 0 120px rgba(255,255,255,0.08));
 }
 
 @keyframes glowPulse {
@@ -743,15 +715,10 @@ body {
     font-size: 1rem;
   }
 
-  .final-visual-card {
+  .astronaut {
     min-width: 260px;
+    min-height: 260px;
     width: 82vw;
-  }
-
-  .final-visual-copy {
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
-    padding: 14px 16px;
+    height: 82vw;
   }
 }

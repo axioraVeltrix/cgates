@@ -452,37 +452,6 @@ section {
   overflow: hidden;
 }
 
-.booking-fallback {
-  padding: 2.25rem;
-}
-
-.booking-notice-label {
-  color: #b983ff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.9rem;
-  margin-bottom: 0.8rem;
-}
-
-.booking-fallback h3 {
-  color: white;
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  margin-bottom: 0.9rem;
-}
-
-.booking-notice-text {
-  color: #c9c9c9;
-  max-width: 720px;
-  line-height: 1.8;
-}
-
-.booking-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 1.6rem;
-}
-
 .cta-section {
   border-radius: 32px;
   padding: 2.5rem;
@@ -580,8 +549,7 @@ section {
   }
 
   .hero-buttons,
-  .cta-actions,
-  .booking-actions {
+  .cta-actions {
     flex-direction: column;
     width: 100%;
   }
