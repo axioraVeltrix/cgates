@@ -4,107 +4,611 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>College Gates</title>
+  <meta
+    name="description"
+    content="College Gates helps students with tutoring, test preparation, mentorship, and admissions guidance."
+  />
   <link rel="stylesheet" href="style.css" />
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.69/build/spline-viewer.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #07080d;
+      color: #ffffff;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .site-shell {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(116, 56, 255, 0.18), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(255, 0, 170, 0.12), transparent 22%),
+        linear-gradient(180deg, #0a0b12 0%, #06070b 100%);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(6, 7, 11, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .btn-primary,
+    .btn-light,
+    .btn-signing {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #6f3cff, #d11cff);
+      color: #fff;
+      box-shadow: 0 14px 40px rgba(137, 58, 255, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-light {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-light:hover,
+    .btn-signing:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-signing {
+      background: #ffffff;
+      color: #0b0d14;
+    }
+
+    .hero-section {
+      position: relative;
+      padding: 90px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge,
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(140, 96, 255, 0.6);
+      color: #c6b2ff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+    }
+
+    .hero-copy p {
+      max-width: 640px;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.82);
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-card {
+      position: relative;
+      width: min(100%, 480px);
+      aspect-ratio: 1 / 1;
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top right, rgba(196, 78, 255, 0.25), transparent 30%),
+        #10121c;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: 12% 12% auto auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184, 81, 255, 0.35), transparent 70%);
+      filter: blur(24px);
+      transition: transform 0.15s linear;
+      pointer-events: none;
+    }
+
+    .hero-card-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+    }
+
+    .hero-card-content img {
+      width: 88%;
+      max-width: 360px;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35));
+      border-radius: 22px;
+    }
+
+    .about-section,
+    .team-section,
+    .cta-section,
+    .contact-section {
+      padding: 70px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .about-card {
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .about-card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 14px;
+    }
+
+    .about-card p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.02rem;
+    }
+
+    .team-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .team-image-wrap {
+      position: relative;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #0f1119;
+      min-height: 460px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .team-image-wrap img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+    }
+
+    .team-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .team-copy h2,
+    .cta-section h2,
+    .contact-copy h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .team-text {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .team-text.active {
+      display: block;
+    }
+
+    .team-role {
+      display: inline-block;
+      color: #c88cff;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .team-text h3 {
+      font-size: clamp(1.6rem, 3vw, 2.8rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .team-text p {
+      color: rgba(255,255,255,0.82);
+      font-size: 1.02rem;
+      max-width: 520px;
+    }
+
+    .team-controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .team-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: rgba(255,255,255,0.25);
+      transition: 0.2s ease;
+    }
+
+    .team-dot.active {
+      background: linear-gradient(90deg, #7a49ff, #d620ff);
+      transform: scale(1.15);
+    }
+
+    .cta-section {
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cta-section .section-label {
+      margin-bottom: 20px;
+    }
+
+    .cta-section h2 {
+      max-width: 850px;
+      margin: 0 auto 24px;
+    }
+
+    .cta-btn {
+      margin-top: 6px;
+    }
+
+    .contact-section {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .contact-copy p:last-child {
+      margin-top: 16px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .contact-form {
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      color: #fff;
+      border-radius: 18px;
+      padding: 16px 18px;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+      margin-bottom: 14px;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .form-btn {
+      border: none;
+      cursor: pointer;
+    }
+
+    .form-status {
+      min-height: 24px;
+      margin-top: 4px;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.95rem;
+    }
+
+    .form-status.success {
+      color: #b9f5cb;
+    }
+
+    .form-status.error {
+      color: #ffb0b0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .site-footer {
+      padding: 28px 0 40px;
+      color: rgba(255,255,255,0.62);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .team-wrapper,
+      .contact-section,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-section {
+        padding-top: 60px;
+      }
+
+      .hero-visual {
+        min-height: 320px;
+      }
+
+      .team-image-wrap img {
+        height: 360px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-row {
+        flex-direction: column;
+        justify-content: center;
+        padding: 16px 0;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .hero-copy h1 {
+        font-size: 3rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+    }
+  </style>
 </head>
 <body>
-  <img class="image-gradient" src="gradient (1).png" alt="gradient" />
-  <div class="layer-blur"></div>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="container nav-row">
+        <a href="index.html" class="brand">COLLEGE GATES</a>
 
-  <div class="container">
-    <header class="navbar">
-      <div class="nav-logo">
-        <a href="index.html">COLLEGE GATES</a>
-      </div>
+        <nav class="nav-links">
+          <a href="#about">About Us</a>
+          <a href="classes.html">Classes</a>
+          <a href="#team">Team</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
-      <nav class="nav-center">
-        <a href="about.html">ABOUT US</a>
-        <a href="classes.html">CLASSES</a>
-      </nav>
-
-      <div class="nav-right">
-        <a href="meet.html" class="meet-btn">Meet with us</a>
+        <a href="classes.html" class="btn-primary">Book Now</a>
       </div>
     </header>
 
-    <main>
-      <section class="hero-section">
-        <div class="hero-content">
-          <a href="about.html" class="hero-pill">About us</a>
+    <main class="container">
+      <section class="hero-section reveal">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="hero-badge">About Us</span>
+            <h1>Empower<br />your<br />future</h1>
+            <p>
+              Unlock your potential at College Gates, where mentorship, strategy,
+              and academic guidance come together to shape your future.
+            </p>
 
-          <h1>Empower your<br />Future</h1>
-
-          <p class="hero-text">
-            Unlock your potential at College Gates, where mentorship,
-            strategy, and academic guidance come together to shape your future.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="classes.html" class="btn-outline">Book now</a>
-            <a href="about.html" class="btn-light">About Us</a>
+            <div class="hero-actions">
+              <a href="classes.html" class="btn-primary">Book a Session</a>
+              <a href="#about" class="btn-light">Learn More</a>
+            </div>
           </div>
-        </div>
 
-        <div class="hero-visual">
-          <div class="hero-glow"></div>
-
-          <spline-viewer
-            class="robot-3d"
-            url="https://prod.spline.design/ZYHEP987m78sYn6s/scene.splinecode">
-          </spline-viewer>
+          <div class="hero-visual">
+            <div class="hero-glow"></div>
+            <div class="hero-card">
+              <div class="hero-card-content">
+                <img src="images/team1.jpg" alt="College Gates mentorship" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="intro-section reveal">
-        <div class="intro-block reveal">
-          <p class="section-label">Our team</p>
-          <h2>
-            Our team comprises Ivy League alumni, top students,
-            professionals, and mentors.
-          </h2>
-          <p>
-            They offer real-world experience and expert guidance in crafting
-            stronger applications, building confidence, and shaping a clearer future.
-          </p>
-        </div>
+      <section class="about-section reveal" id="about">
+        <p class="section-label">Why College Gates</p>
 
-        <div class="intro-block reveal" id="approach">
-          <p class="section-label">Our approach</p>
-          <h2>
-            Preparation becomes direction.
-            Direction becomes opportunity.
-          </h2>
-          <p>
-            At College Gates, we do more than prepare students for exams.
-            We help them build momentum toward universities and goals that truly fit them.
-          </p>
-        </div>
+        <div class="about-grid">
+          <article class="about-card">
+            <h3>Professionals, educators, and mentors.</h3>
+            <p>
+              We offer real-world experience and expert guidance in crafting
+              stronger applications, building confidence, and shaping a clearer future.
+            </p>
+          </article>
+
+          <article class="about-card">
+            <h3>More than preparation. Real momentum.</h3>
+            <p>
+              At College Gates, we do more than prepare students for exams.
+              We help them build momentum toward universities and goals that truly fit them.
+            </p>
+          </article>
+          </div>
       </section>
 
       <section class="team-section reveal" id="team">
-        <div class="team-layout">
+        <div class="team-wrapper">
           <div class="team-image-wrap">
-            <img src="team1.jpg" alt="College Gates team member" id="teamImage" class="team-image" />
+            <img
+              id="teamImage"
+              src="images/team1.jpg"
+              alt="College Gates team member"
+            />
           </div>
 
           <div class="team-copy">
             <p class="section-label">Meet our team</p>
+            <h2>Guiding students with structure, support, and strategy.</h2>
 
             <div class="team-text active" data-index="0">
-              <span class="team-role">Admissions Mentor</span>
-              <h3>Helping students shape stronger applications with clear personal direction.</h3>
-              <p>
-                From essays to strategy, this role focuses on building a stronger story
-                and helping students present their ambitions with confidence.
-              </p>
-            </div>
-
-            <div class="team-text" data-index="1">
               <span class="team-role">Test Prep Specialist</span>
               <h3>Guiding students through SAT, IELTS, and TOEFL with structure and focus.</h3>
               <p>
                 We help students improve performance through smart preparation,
                 consistency, and support built around their goals.
+              </p>
+            </div>
+
+            <div class="team-text" data-index="1">
+              <span class="team-role">Admissions Mentor</span>
+              <h3>Helping students craft stronger applications and personal stories.</h3>
+              <p>
+                From strategy to essays, we help students present themselves clearly,
+                confidently, and competitively.
               </p>
             </div>
 
@@ -117,10 +621,20 @@
               </p>
             </div>
 
+            <div class="team-text" data-index="3">
+              <span class="team-role">Mentor</span>
+              <h3>Helping students build confidence, strategy, and long-term direction.</h3>
+              <p>
+                We guide students through academic planning, applications,
+                and personal growth with a long-term perspective.
+              </p>
+            </div>
+
             <div class="team-controls">
               <button class="team-dot active" data-index="0" aria-label="Show first team member"></button>
               <button class="team-dot" data-index="1" aria-label="Show second team member"></button>
               <button class="team-dot" data-index="2" aria-label="Show third team member"></button>
+              <button class="team-dot" data-index="3" aria-label="Show fourth team member"></button>
             </div>
           </div>
         </div>
@@ -142,79 +656,150 @@
           </p>
         </div>
 
-        <form class="contact-form">
+        <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
-            <input type="text" placeholder="Your name" />
-            <input type="email" placeholder="Your email" />
+            <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
+            <input type="email" name="email" placeholder="Your email" autocomplete="email" required />
           </div>
 
-          <textarea placeholder="Write your message"></textarea>
+          <textarea name="message" placeholder="Write your message" required></textarea>
 
           <button type="submit" class="btn-signing form-btn">Send</button>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
         </form>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2026 College Gates. All rights reserved.</p>
+      </div>
+    </footer>
   </div>
 
   <script>
     const teamImage = document.getElementById("teamImage");
     const teamTexts = document.querySelectorAll(".team-text");
     const teamDots = document.querySelectorAll(".team-dot");
+    const reveals = document.querySelectorAll(".reveal");
+    const hero = document.querySelector(".hero-section");
+    const glow = document.querySelector(".hero-glow");
+    const contactForm = document.getElementById("contactForm");
+    const formStatus = document.getElementById("formStatus");
+
+    const teamPlaceholderImage =
+      "data:image/svg+xml;charset=UTF-8," +
+      encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+          <defs>
+            <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#121826"/>
+              <stop offset="100%" stop-color="#25123d"/>
+            </linearGradient>
+          </defs>
+          <rect width="900" height="900" fill="url(#bg)"/>
+          <circle cx="450" cy="300" r="130" fill="rgba(255,255,255,0.14)"/>
+          <path d="M210 760c40-140 156-220 240-220s200 80 240 220" fill="rgba(255,255,255,0.12)"/>
+          <text x="450" y="120" fill="#ffffff" font-size="54" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" letter-spacing="6">
+            COLLEGE GATES
+          </text>
+          <text x="450" y="835" fill="rgba(255,255,255,0.72)" font-size="34" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+            Team photo placeholder
+          </text>
+        </svg>
+      `);
 
     const teamImages = [
-      "team1.jpg",
-      "team2.jpg",
-      "team3.jpg"
+      "images/team1.jpg",
+      "images/team2.jpg",
+      "images/team3.jpg",
+      "images/team4.jpg"
     ];
 
-    function showMember(index) {
-      teamImage.src = teamImages[index];
+    const validTeamIndexes = Array.from(teamTexts)
+      .map((item) => Number(item.dataset.index))
+      .filter((index) => Number.isInteger(index) && teamImages[index]);
 
-      teamTexts.forEach((item) => item.classList.remove("active"));
-      teamDots.forEach((dot) => dot.classList.remove("active"));
+    function updateTeamImage(index) {
+      if (!teamImage) return;
 
-      document.querySelector(`.team-text[data-index="${index}"]`).classList.add("active");
-      document.querySelector(`.team-dot[data-index="${index}"]`).classList.add("active");
+      const nextImage = teamImages[index] || teamPlaceholderImage;
+      teamImage.dataset.index = String(index);
+      teamImage.dataset.fallbackApplied = "false";
+      teamImage.src = nextImage;
     }
 
-    teamDots.forEach((dot) => {
-      dot.addEventListener("click", () => {
-        showMember(Number(dot.dataset.index));
+    function showMember(index) {
+      if (!validTeamIndexes.length) return;
+
+      const normalizedIndex = validTeamIndexes.includes(index) ? index : validTeamIndexes[0];
+
+      updateTeamImage(normalizedIndex);
+
+      teamTexts.forEach((item) => {
+        item.classList.toggle("active", Number(item.dataset.index) === normalizedIndex);
       });
-    });
 
-    let currentMember = 0;
+      teamDots.forEach((dot) => {
+        dot.classList.toggle("active", Number(dot.dataset.index) === normalizedIndex);
+      });
+    }
 
-    setInterval(() => {
-      currentMember = (currentMember + 1) % teamImages.length;
+    if (teamImage) {
+      teamImage.addEventListener("error", () => {
+        if (teamImage.dataset.fallbackApplied === "true") return;
+        teamImage.dataset.fallbackApplied = "true";
+        teamImage.src = teamPlaceholderImage;
+      });
+    }
+
+    let currentMember = validTeamIndexes[0] || 0;
+
+    if (teamDots.length && validTeamIndexes.length) {
+      teamDots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const nextIndex = Number(dot.dataset.index);
+          currentMember = validTeamIndexes.includes(nextIndex) ? nextIndex : validTeamIndexes[0];
+          showMember(currentMember);
+        });
+      });
+
       showMember(currentMember);
-    }, 5000);
 
-    const reveals = document.querySelectorAll(".reveal");
+      if (validTeamIndexes.length > 1) {
+        window.setInterval(() => {
+          const currentPosition = validTeamIndexes.indexOf(currentMember);
+          const nextPosition = (currentPosition + 1) % validTeamIndexes.length;
+          currentMember = validTeamIndexes[nextPosition];
+          showMember(currentMember);
+        }, 5000);
+      }
+    }
 
     function revealOnScroll() {
+      if (!reveals.length) return;
+
       const triggerBottom = window.innerHeight * 0.88;
 
       reveals.forEach((item) => {
         const rect = item.getBoundingClientRect();
-
         if (rect.top < triggerBottom) {
           item.classList.add("visible");
         }
       });
     }
 
-    window.addEventListener("scroll", revealOnScroll);
-    window.addEventListener("load", revealOnScroll);
-
-    const hero = document.querySelector(".hero-section");
-    const glow = document.querySelector(".hero-glow");
+    if (reveals.length) {
+      window.addEventListener("scroll", revealOnScroll);
+      window.addEventListener("load", revealOnScroll);
+      revealOnScroll();
+    }
 
     if (hero && glow) {
-      hero.addEventListener("mousemove", (e) => {
+      hero.addEventListener("mousemove", (event) => {
         const rect = hero.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top) / rect.height;
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
 
         const moveX = (x - 0.5) * 24;
         const moveY = (y - 0.5) * 24;
@@ -224,6 +809,27 @@
 
       hero.addEventListener("mouseleave", () => {
         glow.style.transform = "translate(0px, 0px)";
+      });
+    }
+
+    if (contactForm && formStatus) {
+      contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(contactForm);
+        const name = String(formData.get("name") || "").trim();
+        const email = String(formData.get("email") || "").trim();
+        const message = String(formData.get("message") || "").trim();
+
+        if (!name || !email || !message) {
+          formStatus.textContent = "Please complete your name, email, and message before submitting.";
+          formStatus.className = "form-status error";
+          return;
+        }
+
+        formStatus.textContent = "Thanks. Your message is ready, but this site does not have a live backend yet. Please use this form content when you connect an email or form service.";
+        formStatus.className = "form-status success";
+        contactForm.reset();
       });
     }
   </script>
