@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College Gates</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.69/build/spline-viewer.js"></script>
+</head>
+<body>
+  <img class="image-gradient" src="gradient (1).png" alt="gradient" />
+  <div class="layer-blur"></div>
+
+  <div class="container">
+    <header class="navbar">
+      <div class="nav-logo">
+        <a href="index.html">COLLEGE GATES</a>
+      </div>
+
+      <nav class="nav-center">
+        <a href="about.html">ABOUT US</a>
+        <a href="classes.html">CLASSES</a>
+      </nav>
+
+      <div class="nav-right">
+        <a href="meet.html" class="meet-btn">Meet with us</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="hero-content">
+          <a href="about.html" class="hero-pill">About us</a>
+
+          <h1>Empower your<br />Future</h1>
+
+          <p class="hero-text">
+            Unlock your potential at College Gates, where mentorship,
+            strategy, and academic guidance come together to shape your future.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="classes.html" class="btn-outline">Book now</a>
+            <a href="about.html" class="btn-light">About Us</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-glow"></div>
+
+          <spline-viewer
+            class="robot-3d"
+            url="https://prod.spline.design/ZYHEP987m78sYn6s/scene.splinecode">
+          </spline-viewer>
+        </div>
+      </section>
+
+      <section class="intro-section reveal">
+        <div class="intro-block reveal">
+          <p class="section-label">Our team</p>
+          <h2>
+            Our team comprises Ivy League alumni, top students,
+            professionals, and mentors.
+          </h2>
+          <p>
+            They offer real-world experience and expert guidance in crafting
+            stronger applications, building confidence, and shaping a clearer future.
+          </p>
+        </div>
+
+        <div class="intro-block reveal" id="approach">
+          <p class="section-label">Our approach</p>
+          <h2>
+            Preparation becomes direction.
+            Direction becomes opportunity.
+          </h2>
+          <p>
+            At College Gates, we do more than prepare students for exams.
+            We help them build momentum toward universities and goals that truly fit them.
+          </p>
+        </div>
+      </section>
+
+      <section class="team-section reveal" id="team">
+        <div class="team-layout">
+          <div class="team-image-wrap">
+            <img src="team1.jpg" alt="College Gates team member" id="teamImage" class="team-image" />
+          </div>
+
+          <div class="team-copy">
+            <p class="section-label">Meet our team</p>
+
+            <div class="team-text active" data-index="0">
+              <span class="team-role">Admissions Mentor</span>
+              <h3>Helping students shape stronger applications with clear personal direction.</h3>
+              <p>
+                From essays to strategy, this role focuses on building a stronger story
+                and helping students present their ambitions with confidence.
+              </p>
+            </div>
+
+            <div class="team-text" data-index="1">
+              <span class="team-role">Test Prep Specialist</span>
+              <h3>Guiding students through SAT, IELTS, and TOEFL with structure and focus.</h3>
+              <p>
+                We help students improve performance through smart preparation,
+                consistency, and support built around their goals.
+              </p>
+            </div>
+
+            <div class="team-text" data-index="2">
+              <span class="team-role">Academic Tutor</span>
+              <h3>Supporting Math and Physics through concept-based teaching.</h3>
+              <p>
+                Our tutoring approach is designed to build deeper understanding,
+                not just short-term answers.
+              </p>
+            </div>
+
+            <div class="team-controls">
+              <button class="team-dot active" data-index="0" aria-label="Show first team member"></button>
+              <button class="team-dot" data-index="1" aria-label="Show second team member"></button>
+              <button class="team-dot" data-index="2" aria-label="Show third team member"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section reveal">
+        <p class="section-label">Let's work together</p>
+        <h2>Book your session and take the first step toward your future.</h2>
+        <a href="classes.html" class="btn-light cta-btn">Book Now &gt;</a>
+      </section>
+
+      <section class="contact-section reveal" id="contact">
+        <div class="contact-copy">
+          <p class="section-label">Get in touch</p>
+          <h2>Tell us how we can help</h2>
+          <p>
+            Whether you need tutoring, test preparation, or admissions guidance,
+            we’re here to support your next step.
+          </p>
+        </div>
+
+        <form class="contact-form">
+          <div class="form-row">
+            <input type="text" placeholder="Your name" />
+            <input type="email" placeholder="Your email" />
+          </div>
+
+          <textarea placeholder="Write your message"></textarea>
+
+          <button type="submit" class="btn-signing form-btn">Send</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const teamImage = document.getElementById("teamImage");
+    const teamTexts = document.querySelectorAll(".team-text");
+    const teamDots = document.querySelectorAll(".team-dot");
+
+    const teamImages = [
+      "team1.jpg",
+      "team2.jpg",
+      "team3.jpg"
+    ];
+
+    function showMember(index) {
+      teamImage.src = teamImages[index];
+
+      teamTexts.forEach((item) => item.classList.remove("active"));
+      teamDots.forEach((dot) => dot.classList.remove("active"));
+
+      document.querySelector(`.team-text[data-index="${index}"]`).classList.add("active");
+      document.querySelector(`.team-dot[data-index="${index}"]`).classList.add("active");
+    }
+
+    teamDots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        showMember(Number(dot.dataset.index));
+      });
+    });
+
+    let currentMember = 0;
+
+    setInterval(() => {
+      currentMember = (currentMember + 1) % teamImages.length;
+      showMember(currentMember);
+    }, 5000);
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+      const triggerBottom = window.innerHeight * 0.88;
+
+      reveals.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+
+        if (rect.top < triggerBottom) {
+          item.classList.add("visible");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+
+    const hero = document.querySelector(".hero-section");
+    const glow = document.querySelector(".hero-glow");
+
+    if (hero && glow) {
+      hero.addEventListener("mousemove", (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+
+        const moveX = (x - 0.5) * 24;
+        const moveY = (y - 0.5) * 24;
+
+        glow.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      });
+
+      hero.addEventListener("mouseleave", () => {
+        glow.style.transform = "translate(0px, 0px)";
+      });
+    }
+  </script>
+</body>
+</html>

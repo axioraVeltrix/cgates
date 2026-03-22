@@ -1,0 +1,724 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #000;
+  color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 2rem 2rem;
+  position: relative;
+  z-index: 100;
+}
+
+.nav-logo {
+  justify-self: start;
+}
+
+.nav-logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.3rem;
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.nav-center a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  transition: opacity 0.3s ease;
+}
+
+.nav-center a:hover {
+  opacity: 0.7;
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.meet-btn {
+  display: inline-block;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.meet-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ================= HERO ================= */
+.about-hero {
+  min-height: 100vh;
+  padding-top: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.about-big-title {
+  font-size: clamp(4rem, 12vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.08);
+}
+
+.about-subtitle {
+  margin-top: 22px;
+  max-width: 700px;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+  padding: 0 20px;
+}
+
+/* ================= ROADMAP ================= */
+/* ================= ROADMAP ================= */
+.about-roadmap {
+  min-height: 100vh;
+  padding: 80px 0 120px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255,255,255,0.08), transparent 22%),
+    radial-gradient(circle at 50% 35%, rgba(255,255,255,0.04), transparent 38%),
+    linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 28%),
+    linear-gradient(315deg, rgba(255,255,255,0.03) 0%, transparent 26%),
+    #000;
+}
+
+.about-roadmap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      125deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(255,255,255,0.03) 35%,
+      rgba(255,255,255,0.03) 46%,
+      transparent 46%,
+      transparent 100%
+    );
+  pointer-events: none;
+}
+
+.roadmap-container {
+  width: min(1320px, 94%);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.roadmap-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-top: 20px;
+  margin-bottom: 90px;
+}
+
+.roadmap-big-number {
+  font-size: clamp(5rem, 10vw, 8rem);
+  line-height: 0.9;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: -4px;
+  flex-shrink: 0;
+}
+
+.roadmap-title-wrap {
+  padding-top: 6px;
+}
+
+.roadmap-label {
+  color: #ff5a1f;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.roadmap-title-wrap h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.03;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 18px;
+  max-width: 760px;
+}
+
+.roadmap-subtitle {
+  max-width: 780px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.72);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+/* ================= DESKTOP ROADMAP ================= */
+.roadmap-desktop {
+  position: relative;
+  min-height: 860px; /* important: more height so bottom cards stay below */
+  display: block;
+}
+
+.road-line {
+  position: absolute;
+  border-top: 2px dashed rgba(255,255,255,0.42);
+}
+
+.road-line-top {
+  left: 8%;
+  top: 95px;
+  width: 76%;
+}
+
+.road-line-bottom {
+  left: 24%;
+  top: 500px;
+  width: 42%;
+}
+
+.road-curve {
+  position: absolute;
+  right: 8%;
+  top: 95px;
+  width: 120px;
+  height: 405px;
+  border-top: 2px dashed rgba(255,255,255,0.42);
+  border-right: 2px dashed rgba(255,255,255,0.42);
+  border-bottom: 2px dashed rgba(255,255,255,0.42);
+  border-left: none;
+  border-radius: 0 150px 150px 0;
+}
+
+/* arrows */
+.arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+}
+
+.arrow-top-1,
+.arrow-top-2,
+.arrow-top-3 {
+  border-left: 12px solid #ff5a1f;
+  top: 86px;
+}
+
+.arrow-bottom-1,
+.arrow-bottom-2 {
+  border-right: 12px solid #ff5a1f;
+  top: 491px;
+}
+
+.arrow-top-1 { left: 28%; }
+.arrow-top-2 { left: 58%; }
+.arrow-top-3 { left: 85%; }
+
+.arrow-bottom-1 { left: 64%; }
+.arrow-bottom-2 { left: 45%; }
+
+.roadmap-step {
+  position: absolute;
+  width: 270px;
+}
+
+.step-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  box-shadow: 0 0 0 6px rgba(255, 90, 31, 0.08);
+  position: relative;
+  z-index: 3;
+}
+
+.step-card {
+  border-radius: 24px;
+  padding: 24px 20px 22px;
+  min-height: 240px;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 90, 31, 0.35);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.4),
+    0 0 30px rgba(255, 90, 31, 0.08);
+}
+
+.step-icon {
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+}
+
+.step-card h3 {
+  color: #fff;
+  font-size: 1.18rem;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.step-card p {
+  color: rgba(255,255,255,0.72);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+/* TOP ROW */
+.step-1 {
+  left: 6%;
+  top: 24px;
+}
+
+.step-2 {
+  left: 37%;
+  top: 24px;
+}
+
+.step-3 {
+  right: 5%;
+  top: 24px;
+}
+
+/* BOTTOM ROW - moved LOWER and spaced out */
+.step-4 {
+  left: 54%;
+  top: 430px;
+}
+
+.step-5 {
+  left: 20%;
+  top: 430px;
+}
+
+/* ================= MOBILE ROADMAP ================= */
+.roadmap-mobile {
+  display: none;
+  position: relative;
+  padding-left: 32px;
+}
+
+.mobile-line {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 22px;
+  border-left: 2px dashed rgba(255,255,255,0.35);
+}
+
+.mobile-step {
+  position: relative;
+  margin-bottom: 26px;
+}
+
+.mobile-step .step-circle {
+  position: relative;
+  left: -10px;
+}
+
+.mobile-step .step-card {
+  margin-left: 24px;
+  min-height: auto;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1180px) {
+  .roadmap-desktop {
+    display: none;
+  }
+
+  .roadmap-mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  .roadmap-header {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 42px;
+  }
+
+  .roadmap-big-number {
+    font-size: 5.5rem;
+  }
+
+  .roadmap-title-wrap h1 {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .roadmap-subtitle {
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+
+  .about-roadmap {
+    padding: 40px 0 80px;
+  }
+}
+
+@media (max-width: 560px) {
+  .roadmap-container {
+    width: min(92%, 100%);
+  }
+
+  .roadmap-big-number {
+    font-size: 4.5rem;
+  }
+
+  .roadmap-label {
+    font-size: 0.78rem;
+  }
+
+  .roadmap-title-wrap h1 {
+    font-size: 1.9rem;
+  }
+
+  .step-card {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .step-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .step-card p {
+    font-size: 0.92rem;
+  }
+
+  .step-icon {
+    font-size: 1.5rem;
+  }
+
+  .step-circle {
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+}
+/* ================= FINAL ASTRONAUT SECTION ================= */
+.final-book-section {
+  min-height: 100vh;
+  padding: 120px 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.final-book-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.final-book-content {
+  max-width: 560px;
+  z-index: 2;
+}
+
+.final-label {
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 16px;
+}
+
+.final-book-content h2 {
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+  line-height: 1.02;
+  margin-bottom: 22px;
+  color: #fff;
+}
+
+.final-text {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 500px;
+  margin-bottom: 30px;
+}
+
+.final-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border-radius: 999px;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.final-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(255, 255, 255, 0.14);
+  opacity: 0.94;
+}
+
+.final-book-visual {
+  flex: 1;
+  min-height: 540px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.02) 40%,
+    transparent 72%
+  );
+}
+
+.final-glow {
+  position: absolute;
+  width: min(42vw, 560px);
+  height: min(42vw, 560px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.12) 0%,
+    rgba(255,255,255,0.04) 35%,
+    rgba(255,255,255,0) 72%
+  );
+  filter: blur(52px);
+  animation: glowPulse 5.5s ease-in-out infinite;
+}
+
+.astronaut {
+  position: relative;
+  z-index: 2;
+  width: min(48vw, 620px);
+  height: min(48vw, 620px);
+  min-width: 320px;
+  min-height: 320px;
+  background: transparent;
+  pointer-events: none;
+  filter:
+    drop-shadow(0 0 40px rgba(255,255,255,0.15))
+    drop-shadow(0 0 120px rgba(255,255,255,0.08));
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    transform: scale(0.96);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1180px) {
+  .roadmap-desktop {
+    display: none;
+  }
+
+  .roadmap-mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    text-align: center;
+    padding: 1.5rem 1.2rem;
+  }
+
+  .nav-logo,
+  .nav-right {
+    justify-self: center;
+  }
+
+  .nav-center {
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-logo a {
+    font-size: 1.5rem;
+    letter-spacing: 0.18rem;
+  }
+
+  .nav-center a {
+    font-size: 1rem;
+  }
+
+  .meet-btn {
+    font-size: 1rem;
+    padding: 0.85rem 1.5rem;
+  }
+
+  .roadmap-header {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 42px;
+  }
+
+  .roadmap-big-number {
+    font-size: 5.5rem;
+  }
+
+  .roadmap-title-wrap h1 {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .roadmap-subtitle {
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+
+  .about-roadmap {
+    padding: 40px 0 80px;
+  }
+
+  .final-book-section {
+    flex-direction: column;
+    padding: 90px 7vw;
+    text-align: center;
+  }
+
+  .final-book-content {
+    max-width: 100%;
+  }
+
+  .final-text {
+    max-width: 100%;
+  }
+
+  .final-book-visual {
+    width: 100%;
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 560px) {
+  .roadmap-container {
+    width: min(92%, 100%);
+  }
+
+  .about-big-title {
+    font-size: clamp(3.1rem, 18vw, 5rem);
+  }
+
+  .about-subtitle {
+    font-size: 0.98rem;
+  }
+
+  .roadmap-big-number {
+    font-size: 4.5rem;
+  }
+
+  .roadmap-label {
+    font-size: 0.78rem;
+  }
+
+  .roadmap-title-wrap h1 {
+    font-size: 1.9rem;
+  }
+
+  .step-card {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .step-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .step-card p {
+    font-size: 0.92rem;
+  }
+
+  .step-icon {
+    font-size: 1.5rem;
+  }
+
+  .step-circle {
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+
+  .astronaut {
+    min-width: 260px;
+    min-height: 260px;
+    width: 82vw;
+    height: 82vw;
+  }
+}
